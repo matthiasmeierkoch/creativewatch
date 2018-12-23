@@ -1,17 +1,14 @@
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(255);
-
+    frameRate(30);
     angleMode(DEGREES);
+    //noCursor();
 
 
 }
 
 function draw() {
-    background(0);
-    noFill();
-    stroke(color(255, 0, 0));
-    strokeWeight(20);
 
     var mil = millis();
     var sec = second();
@@ -19,31 +16,54 @@ function draw() {
     var hr = hour();
     var d = day();
     var m = month();
-    
+
     var angleMil = map(mil, 0, 1000, 0, 360);
     var angleSec = map(sec, 0, 60, 0, 360);
     var angleMin = map(min, 0, 60, 0, 360);
     var angleHr = map(hr, 0, 24, 0, 360);
     var angleDay = map (d, 0, 7, 0, 360)
     var angleMonth = map (m, 0, 12, 0, 360)
-  
+
+    background(0,0,0,10);
+    noFill();
+    stroke(color(255, 255, 255));
+    strokeWeight(2);
+   
+
+
+    // milliseconds
+    push();
+	translate(width/2,height/2);
+    rotate(angleMil);
+    ellipse(50,0,100,50);
+    pop();
+    angleMil=angleMil+1;
+
+    //seconds
+    fill(250, 5);
+    arc(width / 2, height / 2, hr*20, hr*20, 0, angleSec);
     
-    //Millisekunden
-    arc(width / 2, height / 2, 700, 700, 0, angleMil);
+    //cursor
+    //ellipse(mouseX, mouseY, 10, 10);
 
-    //Sekunden
-    arc(width / 2, height / 2, 600, 600, 0, angleSec);
+    // hours
+    rect(width / 2 - hr*20 / 2, height / 2 - hr *20/ 2, hr * 20, hr * 20);
 
-    //Minuten
-    arc(width / 2, height / 2, 500, 500, 0, angleMin);
+    //Day
+    rect(width/2-240,height/2-240, 480, 480);
 
-    //Stunden
-    arc(width / 2, height / 2, 400, 400, 0, angleHr);
+    //minutes
+    translate(width/2, height/2);
+    rotate(angleMin);
+    line(0, 0, 0, -hr*10);
 
-    //Tage
-    arc(width / 2, height / 2, 300, 300, 0, angleDay);
 
-    //Months
-    arc(width / 2, height / 2, 200, 200, 0, angleMonth);
+    //rotating triangle
+    // translate(width/2, height/2);
+    // rotate(angleMin);
+    // triangle(0, -hr*10, -hr*10, hr*10, hr*10, hr*10);
+ 
+
+
 
     }
