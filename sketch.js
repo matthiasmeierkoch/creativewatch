@@ -28,14 +28,18 @@ function draw() {
     noFill();
     stroke(color(255, 255, 255));
     strokeWeight(2);
-   
+    
 
+
+    
+    // milliseconds
+    // arc(width / 2, height / 2, hr*5, hr*5, 0, angleMil);
 
     // milliseconds
     push();
 	translate(width/2,height/2);
     rotate(angleMil);
-    ellipse(50,0,100,50);
+    ellipse(50,0,hr*5,hr*5);
     pop();
     angleMil=angleMil+1;
 
@@ -63,7 +67,6 @@ function draw() {
     // rotate(angleMin);
     // triangle(0, -hr*10, -hr*10, hr*10, hr*10, hr*10);
  
-
-
+ 
 
     }
